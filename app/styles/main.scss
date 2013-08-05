@@ -96,5 +96,26 @@ div#mainContent{
             height: 90%;
             border: none;
         }
+        ul{
+            li.contact{
+                float: left;
+                width: 200px;
+                height: 150px;
+                border: 1px solid black;
+                position: relative;
+
+                p{
+                    padding-left: 5px;
+                    padding-top: 5px;
+                    padding-right: 5px;
+                }
+
+                button.deleteContact{
+                    position: absolute;
+                    bottom: 3px;
+                    right: 3px;
+                }
+            }
+        }
     }
 }

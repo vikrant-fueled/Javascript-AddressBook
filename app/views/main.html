@@ -25,12 +25,11 @@
 		<fieldset id="addressBook">
 			<legend>Address Book</legend>
 			<ul>
-				<li ng-repeat="person in persons | filter:searchQuery">
-					{{person.name}}
-					<hr />
-					{{person.address}}
-					<br /> 
-					<button ng-click="removePerson(person)"><i class="icon-minus"></i>Delete</button>
+				<li class="contact" ng-repeat="person in persons | filter:searchQuery">
+					<p><strong>{{person.name}}</strong>
+					<br/>
+					Address : {{person.address}}</p>
+					<button class="deleteContact" ng-click="removePerson(person)"><i class="icon-minus"></i>Delete</button>
 				</li>
 			</ul>
 		</fieldset>
