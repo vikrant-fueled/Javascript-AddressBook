@@ -80,14 +80,12 @@ angular.module('JavascriptAddressBookApp')
     		var person = {};
     		person.name = $scope.name;
     		person.address = $scope.address;
-    		person.id = AddressBook.addEntry(person);
+    		person.id = persons.length + 1;
     		$scope.persons.push(person);
-    		console.log($scope.persons);
     	}
 
     	$scope.removePerson = function(person){
     		var index=$scope.persons.indexOf(person)
   			$scope.persons.splice(index,1);
-  			AddressBook.addEntry(person);
     	}
   });
