@@ -81,6 +81,7 @@ angular.module('JavascriptAddressBookApp')
     		person.name = $scope.name;
     		person.address = $scope.address;
     		person.id = $scope.persons.length + 1;
+    		var entrySuccess = addEntry(person);
     		$scope.persons.push(person);
     	}
 
