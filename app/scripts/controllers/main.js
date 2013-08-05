@@ -80,7 +80,7 @@ angular.module('JavascriptAddressBookApp')
     		var person = {};
     		person.name = $scope.name;
     		person.address = $scope.address;
-    		person.id = persons.length + 1;
+    		person.id = $scope.persons.length + 1;
     		$scope.persons.push(person);
     	}
 
