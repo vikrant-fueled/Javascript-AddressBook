@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('JavascriptAddressBookApp', ['localStorage'])
+angular.module('JavascriptAddressBookApp')
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

@@ -8,7 +8,7 @@
 
 
 angular.module('JavascriptAddressBookApp')
-  .controller('MainCtrl', function ($scope, $store) {
+  .controller('MainCtrl', function ($scope) {
 
     	$scope.WelcomeText = "Javascript Address Book";
 
@@ -66,28 +66,36 @@ angular.module('JavascriptAddressBookApp')
 		
 		$scope.init = function(){
 			console.log("Initializing localStorage....");
-			if(localStorage.getItem('persons') == "undefined")
-    		$scope.persons = [];
+
+			if (typeof(localStorage) != 'undefined') {
+				if(localStorage.getItem('persons') == "undefined")
+	    		$scope.persons = [];
+	    		else
+	    		$scope.persons = JSON.parse(localStorage.getItem('persons'));
+				console.log("Done !");
+
+				$scope.addPerson = function(){
+		    		var person = {};
+		    		person.name = $scope.name;
+		    		person.address = $scope.address;
+		    		person.id = $scope.persons.length + 1;
+		    		$scope.persons.push(person);
+		    		localStorage.setItem('persons', JSON.stringify($scope.persons));
+		    	}
+
+		    	$scope.removePerson = function(person){
+		    		var index=$scope.persons.indexOf(person)
+		  			$scope.persons.splice(index,1);
+		    		console.log($scope.persons);
+		    		localStorage.setItem('persons', JSON.stringify($scope.persons));
+		    	}
+
+    		}
     		else
-    		$scope.persons = JSON.parse(localStorage.getItem('persons'));
-			console.log("Done !");
+    		{
+    			alert("localStorage is not supported in your browser.")
+    		}
 		}
 
 		$scope.init();
-
-    	$scope.addPerson = function(){
-    		var person = {};
-    		person.name = $scope.name;
-    		person.address = $scope.address;
-    		person.id = $scope.persons.length + 1;
-    		$scope.persons.push(person);
-    		localStorage.setItem('persons', JSON.stringify($scope.persons));
-    	}
-
-    	$scope.removePerson = function(person){
-    		var index=$scope.persons.indexOf(person)
-  			$scope.persons.splice(index,1);
-    		console.log($scope.persons);
-    		localStorage.setItem('persons', JSON.stringify($scope.persons));
-    	}
   });
