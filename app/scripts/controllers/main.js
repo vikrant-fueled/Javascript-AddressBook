@@ -78,16 +78,9 @@ angular.module('JavascriptAddressBookApp')
 
 				$scope.addPerson = function(){
 		    		var person = {};
-		    		var id;
 		    		person.name = $scope.name;
 		    		person.address = $scope.address;
-
-		    		if($scope.persons == null)
-						id = 1;
-					else
-						id = $scope.persons.length + 1;
-
-		    		person.id = id;
+		    		person.id = $scope.persons.length + 1
 		    		console.log($scope.persons);
 		    		$scope.persons.push(person);
 		    		localStorage.setItem('persons', JSON.stringify($scope.persons));
