@@ -67,18 +67,28 @@ angular.module('JavascriptAddressBookApp')
 		$scope.init = function(){
 			console.log("Initializing localStorage....");
 
-			if (typeof(localStorage) != 'undefined') {
-				if(localStorage.getItem('persons') == "undefined")
-	    		$scope.persons = [];
-	    		else
+			if(typeof(localStorage) != 'undefined') {
+
+				$scope.persons = [];
+
+				if(localStorage.getItem('persons') != undefined)
 	    		$scope.persons = JSON.parse(localStorage.getItem('persons'));
+
 				console.log("Done !");
 
 				$scope.addPerson = function(){
 		    		var person = {};
+		    		var id;
 		    		person.name = $scope.name;
 		    		person.address = $scope.address;
-		    		person.id = $scope.persons.length + 1;
+
+		    		if($scope.persons == null)
+						id = 1;
+					else
+						id = $scope.persons.length + 1;
+
+		    		person.id = id;
+		    		console.log($scope.persons);
 		    		$scope.persons.push(person);
 		    		localStorage.setItem('persons', JSON.stringify($scope.persons));
 		    	}
